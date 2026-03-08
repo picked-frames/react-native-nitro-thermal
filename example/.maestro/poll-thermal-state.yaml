@@ -1,0 +1,24 @@
+# Poll Thermal State Test
+#
+# Validates: tapping "Get Thermal State" returns a valid thermal state
+# Prerequisites: app installed on simulator/emulator
+
+appId: ${APP_ID}
+---
+- launchApp
+
+# Initial state shows placeholder
+- assertVisible: "Press button to check"
+
+# Tap the poll button
+- tapOn:
+    id: "poll-button"
+
+# Placeholder should be replaced by a thermal state value
+- assertNotVisible: "Press button to check"
+
+# One of the valid thermal states should appear in the poll card
+- assertVisible:
+    id: "poll-value"
+
+- takeScreenshot: 01-after-poll

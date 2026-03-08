@@ -1,0 +1,20 @@
+{
+  "name": "react-native-nitro-thermal-root",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "example"
+  ],
+  "scripts": {
+    "specs": "bun --cwd packages/react-native-nitro-thermal run specs",
+    "example": "bun --cwd example",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "bun --cwd packages/react-native-nitro-thermal run typescript && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.30.0",
+    "typescript": "^5.8.3"
+  }
+}

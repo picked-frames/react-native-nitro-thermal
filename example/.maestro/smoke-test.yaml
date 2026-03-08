@@ -1,0 +1,24 @@
+# Smoke Test — Thermal Monitor Example
+#
+# Validates: app launches, UI renders, both cards visible
+# Prerequisites: app installed on simulator/emulator
+
+appId: ${APP_ID}
+---
+- launchApp
+
+# Verify app renders
+- assertVisible: "Thermal Monitor"
+- assertVisible: "react-native-nitro-thermal"
+
+# Verify both cards are present
+- assertVisible:
+    id: "poll-card"
+- assertVisible:
+    id: "hook-card"
+
+# Hook card should show a thermal state value
+- assertVisible:
+    id: "hook-value"
+
+- takeScreenshot: 01-initial-state

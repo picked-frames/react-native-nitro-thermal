@@ -1,0 +1,18 @@
+# Hook State Test
+#
+# Validates: useThermalState hook renders a valid thermal state
+# Prerequisites: app installed on simulator/emulator
+
+appId: ${APP_ID}
+---
+- launchApp
+
+# Hook card should be visible
+- assertVisible:
+    id: "hook-card"
+
+# Hook should have rendered a thermal state value
+- assertVisible:
+    id: "hook-value"
+
+- takeScreenshot: 01-hook-state
