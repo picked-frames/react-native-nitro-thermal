@@ -38,7 +38,15 @@
   },
   "keywords": [
     "react-native",
-    "nitro"
+    "nitro",
+    "new-archictecture",
+    "new-arch",
+    "thermal",
+    "thermal-state",
+    "overheating",
+    "ios",
+    "android",
+    "typescript"
   ],
   "repository": {
     "type": "git",
