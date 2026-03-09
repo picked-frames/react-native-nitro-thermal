@@ -62,6 +62,14 @@ jobs:
             | jq -r '.devices | to_entries[] | .value[] | select(.name == "iPhone 16") | .udid' \
             | head -1)
           xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+
+      - name: Launch app to warm XCTest driver
+        env:
+          MAESTRO_DRIVER_STARTUP_TIMEOUT: 300000
+        run: |
+          xcrun simctl launch booted org.reactjs.native.example.ThermalExample || true
+          sleep 5
 
       - name: Install app on simulator
         run: |
@@ -78,7 +86,12 @@ jobs:
             sleep 2
           done
 
+      - name: Pre-warm bundle
+        run: curl -sf "http://localhost:8081/index.bundle?platform=ios&dev=true" > /dev/null
+
       - name: Run Maestro tests
+        env:
+          MAESTRO_DRIVER_STARTUP_TIMEOUT: 300000
         run: |
           cd example
           maestro test .maestro/ --env APP_ID=org.reactjs.native.example.ThermalExample
@@ -146,9 +159,14 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           script: |
             adb install example/android/app/build/outputs/apk/debug/app-debug.apk
+            adb reverse tcp:8081 tcp:8081
             cd example && bun start &
             for i in $(seq 1 30); do curl -sf http://localhost:8081/status && break; sleep 2; done
-            maestro test .maestro/ --env APP_ID=com.thermalexample
+            curl -sf "http://localhost:8081/index.bundle?platform=android&dev=true" > /dev/null
+            maestro test example/.maestro/ --env APP_ID=com.thermalexample
+            TEST_EXIT=$?
+            kill $(lsof -ti:8081) 2>/dev/null || true
+            exit $TEST_EXIT
 
       - name: Upload screenshots
         if: always()
