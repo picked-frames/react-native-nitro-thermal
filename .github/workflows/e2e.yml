@@ -79,6 +79,9 @@ jobs:
             sleep 2
           done
 
+      - name: Pre-warm bundle
+        run: curl -sf "http://localhost:8081/index.bundle?platform=ios&dev=true" > /dev/null
+
       - name: Run Maestro tests
         env:
           MAESTRO_DRIVER_STARTUP_TIMEOUT: 120000
@@ -151,12 +154,12 @@ jobs:
             adb install example/android/app/build/outputs/apk/debug/app-debug.apk
             adb reverse tcp:8081 tcp:8081
             cd example && bun start &
-            METRO_PID=$!
             for i in $(seq 1 30); do curl -sf http://localhost:8081/status && break; sleep 2; done
+            curl -sf "http://localhost:8081/index.bundle?platform=android&dev=true" > /dev/null
             maestro test example/.maestro/ --env APP_ID=com.thermalexample
-            RESULT=$?
-            kill $METRO_PID 2>/dev/null || true
-            exit $RESULT
+            TEST_EXIT=$?
+            kill $(lsof -ti:8081) 2>/dev/null || true
+            exit $TEST_EXIT
 
       - name: Upload screenshots
         if: always()
