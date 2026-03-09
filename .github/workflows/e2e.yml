@@ -55,7 +55,6 @@ jobs:
         run: |
           curl -fsSL "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
-          brew install idb-companion
 
       - name: Boot simulator
         run: |
@@ -64,7 +63,12 @@ jobs:
             | head -1)
           xcrun simctl boot "$UDID" || true
           xcrun simctl bootstatus "$UDID" -b
-          idb_companion --udid "$UDID" &
+
+      - name: Launch app to warm XCTest driver
+        env:
+          MAESTRO_DRIVER_STARTUP_TIMEOUT: 300000
+        run: |
+          xcrun simctl launch booted org.reactjs.native.example.ThermalExample || true
           sleep 5
 
       - name: Install app on simulator
