@@ -151,8 +151,12 @@ jobs:
             adb install example/android/app/build/outputs/apk/debug/app-debug.apk
             adb reverse tcp:8081 tcp:8081
             cd example && bun start &
+            METRO_PID=$!
             for i in $(seq 1 30); do curl -sf http://localhost:8081/status && break; sleep 2; done
             maestro test example/.maestro/ --env APP_ID=com.thermalexample
+            RESULT=$?
+            kill $METRO_PID 2>/dev/null || true
+            exit $RESULT
 
       - name: Upload screenshots
         if: always()

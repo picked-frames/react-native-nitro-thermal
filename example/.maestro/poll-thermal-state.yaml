@@ -7,8 +7,10 @@ appId: ${APP_ID}
 ---
 - launchApp
 
-# Initial state shows placeholder
-- assertVisible: "Press button to check"
+# Wait for app to finish loading (Metro bundling can be slow in CI)
+- extendedWaitUntil:
+    visible: "Press button to check"
+    timeout: 60000
 
 # Tap the poll button
 - tapOn:

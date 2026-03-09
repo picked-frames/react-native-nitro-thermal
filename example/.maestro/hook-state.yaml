@@ -7,9 +7,11 @@ appId: ${APP_ID}
 ---
 - launchApp
 
-# Hook card should be visible
-- assertVisible:
-    id: "hook-card"
+# Wait for app to finish loading (Metro bundling can be slow in CI)
+- extendedWaitUntil:
+    visible:
+      id: "hook-card"
+    timeout: 60000
 
 # Hook should have rendered a thermal state value
 - assertVisible:

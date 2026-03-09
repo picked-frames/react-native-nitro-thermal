@@ -7,8 +7,12 @@ appId: ${APP_ID}
 ---
 - launchApp
 
+# Wait for app to finish loading (Metro bundling can be slow in CI)
+- extendedWaitUntil:
+    visible: "Thermal Monitor"
+    timeout: 60000
+
 # Verify app renders
-- assertVisible: "Thermal Monitor"
 - assertVisible: "react-native-nitro-thermal"
 
 # Verify both cards are present
