@@ -4,15 +4,6 @@
 
 Monitor the thermal state of iOS and Android devices in real-time. Built with [Nitro Modules](https://github.com/mrousavy/nitro).
 
-## Features
-
-- **⚡ Synchronous access** — get the current thermal state instantly via JSI, no async bridge
-- **🪝 React hook** — `useThermalState` with per-state callbacks (`onNominal`, `onCritical`, etc.)
-- **📡 Real-time listener** — subscribe to thermal state changes
-- **📱 Cross-platform** — unified API across iOS (`ProcessInfo.thermalState`) and Android (`PowerManager.currentThermalStatus`) with consistent behavior
-- **🎯 Fully typed** — TypeScript-first API with exported types for all options and states
-- **🪶 Lightweight** — zero JS dependencies beyond `react-native-nitro-modules`
-
 ## Installation
 
 ```bash
@@ -196,7 +187,7 @@ function MyComponent() {
 }
 ```
 
-## Limitations
+## Notes
 
 - **New arch only**
 - **Temperature values** are not exposed by iOS or Android public APIs — only discrete states are available.
