@@ -189,9 +189,7 @@ function MyComponent() {
 
 ## Notes
 
-- **New arch only**
 - **Temperature values** are not exposed by iOS or Android public APIs — only discrete states are available.
-- **Android** requires API 29+ (`minSdkVersion 29`).
 - **Emulators/simulators** real thermal info doesn't exist on emulators / simulators, often returning 'nominal' regardless. Test on real devices
 
 ## License
