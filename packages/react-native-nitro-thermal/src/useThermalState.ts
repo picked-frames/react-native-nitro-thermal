@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { addThermalStateListener } from './index'
+import { addThermalStateListener } from './thermalMonitor'
 import type { ThermalState } from './specs/ThermalMonitor.nitro'
 
 type ThermalStateCallback = (previous: ThermalState) => void

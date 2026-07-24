@@ -15,11 +15,11 @@ namespace margelo::nitro::nitrothermal {
   using namespace facebook;
 
   /**
-   * The C++ JNI bridge between the C++ enum "ThermalState" and the the Kotlin enum "ThermalState".
+   * The C++ JNI bridge between the C++ enum "ThermalState" and the Kotlin enum "ThermalState".
    */
   struct JThermalState final: public jni::JavaClass<JThermalState> {
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/ThermalState;";
+    static constexpr auto kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/ThermalState;";
 
   public:
     /**

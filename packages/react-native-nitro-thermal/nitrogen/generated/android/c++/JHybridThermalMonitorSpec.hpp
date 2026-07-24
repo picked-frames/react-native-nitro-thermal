@@ -21,11 +21,11 @@ namespace margelo::nitro::nitrothermal {
   class JHybridThermalMonitorSpec: public virtual HybridThermalMonitorSpec, public virtual JHybridObject {
   public:
     struct JavaPart: public jni::JavaClass<JavaPart, JHybridObject::JavaPart> {
-      static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/HybridThermalMonitorSpec;";
+      static constexpr auto kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/HybridThermalMonitorSpec;";
       std::shared_ptr<JHybridThermalMonitorSpec> getJHybridThermalMonitorSpec();
     };
     struct CxxPart: public jni::HybridClass<CxxPart, JHybridObject::CxxPart> {
-      static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/HybridThermalMonitorSpec$CxxPart;";
+      static constexpr auto kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/HybridThermalMonitorSpec$CxxPart;";
       static jni::local_ref<jhybriddata> initHybrid(jni::alias_ref<jhybridobject> jThis);
       static void registerNatives();
       using HybridBase::HybridBase;

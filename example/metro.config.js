@@ -1,14 +1,17 @@
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
-const path = require('path');
+const { getDefaultConfig } = require('expo/metro-config')
+const path = require('path')
 
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('@react-native/metro-config').MetroConfig}
- */
-const config = {
-  watchFolders: [path.resolve(__dirname, '..')],
-};
+const projectRoot = __dirname
+const workspaceRoot = path.resolve(projectRoot, '..')
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+const config = getDefaultConfig(projectRoot)
+
+// Watch the whole repo so the local library resolves from ../packages,
+// and let Metro fall back to the workspace-root node_modules.
+config.watchFolders = [workspaceRoot]
+config.resolver.nodeModulesPaths = [
+  path.resolve(projectRoot, 'node_modules'),
+  path.resolve(workspaceRoot, 'node_modules'),
+]
+
+module.exports = config

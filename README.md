@@ -7,7 +7,7 @@ Monitor the thermal state of iOS and Android devices in real-time. Built with [N
 ## Installation
 
 ```bash
-bun add react-native-nitro-thermal react-native-nitro-modules
+npm install react-native-nitro-thermal react-native-nitro-modules
 ```
 
 ### iOS

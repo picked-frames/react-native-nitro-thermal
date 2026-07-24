@@ -29,9 +29,9 @@ int initialize(JavaVM* vm) {
 }
 
 struct JHybridThermalMonitorSpecImpl: public jni::JavaClass<JHybridThermalMonitorSpecImpl, JHybridThermalMonitorSpec::JavaPart> {
-  static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/HybridThermalMonitor;";
+  static constexpr auto kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/HybridThermalMonitor;";
   static std::shared_ptr<JHybridThermalMonitorSpec> create() {
-    static auto constructorFn = javaClassStatic()->getConstructor<JHybridThermalMonitorSpecImpl::javaobject()>();
+    static const auto constructorFn = javaClassStatic()->getConstructor<JHybridThermalMonitorSpecImpl::javaobject()>();
     jni::local_ref<JHybridThermalMonitorSpec::JavaPart> javaPart = javaClassStatic()->newObject(constructorFn);
     return javaPart->getJHybridThermalMonitorSpec();
   }

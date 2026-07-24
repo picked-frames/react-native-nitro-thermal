@@ -1,4 +1,24 @@
 {
-  "name": "ThermalExample",
-  "displayName": "ThermalExample"
+  "expo": {
+    "name": "Thermal Example",
+    "slug": "thermal-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "thermalexample",
+    "newArchEnabled": true,
+    "ios": {
+      "bundleIdentifier": "com.pickedframes.nitrothermalexample"
+    },
+    "android": {
+      "package": "com.pickedframes.nitrothermalexample"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": { "minSdkVersion": 29 }
+        }
+      ]
+    ]
+  }
 }
