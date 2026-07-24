@@ -25,7 +25,7 @@ namespace margelo::nitro::nitrothermal {
    */
   struct JFunc_void_ThermalState: public jni::JavaClass<JFunc_void_ThermalState> {
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/Func_void_ThermalState;";
+    static constexpr auto kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/Func_void_ThermalState;";
 
   public:
     /**
@@ -61,7 +61,7 @@ namespace margelo::nitro::nitrothermal {
     }
 
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/Func_void_ThermalState_cxx;";
+    static constexpr auto kJavaDescriptor = "Lcom/margelo/nitro/nitrothermal/Func_void_ThermalState_cxx;";
     static void registerNatives() {
       registerHybrid({makeNativeMethod("invoke_cxx", JFunc_void_ThermalState_cxx::invoke_cxx)});
     }

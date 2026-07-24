@@ -6,11 +6,11 @@
     "example"
   ],
   "scripts": {
-    "specs": "bun --cwd packages/react-native-nitro-thermal run specs",
-    "example": "bun --cwd example",
+    "specs": "npm run specs --prefix packages/react-native-nitro-thermal",
+    "example": "npm run --prefix example",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "bun --cwd packages/react-native-nitro-thermal run typescript && changeset publish"
+    "release": "npm run typescript --prefix packages/react-native-nitro-thermal && changeset publish"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.6.0",
