@@ -1,6 +1,8 @@
 # react-native-nitro-thermal
 
 [![npm version](https://img.shields.io/npm/v/react-native-nitro-thermal)](https://www.npmjs.com/package/react-native-nitro-thermal)
+[![npm downloads](https://img.shields.io/npm/dm/react-native-nitro-thermal)](https://www.npmjs.com/package/react-native-nitro-thermal)
+[![license](https://img.shields.io/npm/l/react-native-nitro-thermal)](https://www.npmjs.com/package/react-native-nitro-thermal)
 
 Monitor the thermal state of iOS and Android devices in real-time. Built with [Nitro Modules](https://github.com/mrousavy/nitro).
 
